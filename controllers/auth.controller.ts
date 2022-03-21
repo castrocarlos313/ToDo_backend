@@ -27,7 +27,7 @@ export async function iniciarSesion(req: Request, res: Response) {
       });
     }
 
-    const esCorrecta = await bcrypt.compare(contraseña, existe.contraseña);
+    const esCorrecta = bcrypt.compareSync(contraseña, existe.contraseña);
 
     if (!esCorrecta) {
       return res.status(400).json({
